@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <uv.h>
 
 void on_connect(uv_connect_t *req, int status) {

@@ -1,5 +1,11 @@
-# find_package(DoubleConversion REQUIRED)
+# note:
+# runtime dependencies of folly are
+# boost, double-conversion, fmt, gflags and glog
+
+find_package(Boost REQUIRED COMPONENTS context)
+find_package(fmt REQUIRED)
 find_package(glog REQUIRED)
+find_package(gflags REQUIRED)
 
 find_path(
   FOLLY_INCLUDE_DIR
@@ -24,11 +30,10 @@ if(FOLLY_FOUND AND NOT FOLLY_FIND_QUIETLY)
 endif()
 
 add_library(folly SHARED IMPORTED)
-target_link_libraries(folly INTERFACE glog)
+target_link_libraries(folly INTERFACE double-conversion fmt glog gflags c++abi event Boost::context)
 set_target_properties(
   folly
   PROPERTIES
   IMPORTED_LOCATION "${FOLLY_LIBRARY}"
   INTERFACE_INCLUDE_DIRECTORIES "${FOLLY_INCLUDE_DIR}"
-  
 )

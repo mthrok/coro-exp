@@ -13,9 +13,6 @@ set(USE_LIBUV ON CACHE BOOL "Use libuv")
 set(USE_FOLLY ON CACHE BOOL "Use folly")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-if (APPLE)
-  set(CMAKE_OSX_DEPLOYMENT_TARGET "10.8" CACHE STRING "" FORCE)
-endif (APPLE)
 
 cmake_policy(SET CMP0135 NEW)
 include(FetchContent)
